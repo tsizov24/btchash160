@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"math/big"
 	"reflect"
+	"runtime"
 	"time"
 
 	"btchash160/pkg/logger"
@@ -45,6 +46,13 @@ func getInt(s string) *big.Int {
 }
 
 func Start() {
+	for i := 1; i < runtime.NumCPU(); i++ {
+		go count()
+	}
+	count()
+}
+
+func count() {
 	var k *big.Int
 	for {
 		t := time.Now()
