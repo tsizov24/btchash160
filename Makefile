@@ -1,3 +1,8 @@
+.PHONY: run
+
+run:
+	go run cmd/btchash160/btchash160.go
+
 .PHONY: up down start stop restart
 
 up:
